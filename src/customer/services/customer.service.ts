@@ -13,7 +13,10 @@ import {
   GetCustomerProfileDto,
   UpdateCustomerProfileDto,
 } from '../dto';
-import { GetCustomerClaimsQuery, GetCustomerProfileQuery } from '../queries/impl';
+import {
+  GetCustomerClaimsQuery,
+  GetCustomerProfileQuery,
+} from '../queries/impl';
 import { ClaimEntity, CustomerEntity } from 'src/db/entities';
 import { TextResponseModel } from '../models';
 
@@ -50,7 +53,7 @@ export class CustomerService {
 
   async removeCustomerProfile(
     removeCustomerProfileDto: RemoveCustomerProfileDto,
-  ): Promise<Boolean> {
+  ): Promise<boolean> {
     return this.commandBus.execute(
       new RemoveCustomerProfileCommand(removeCustomerProfileDto),
     );

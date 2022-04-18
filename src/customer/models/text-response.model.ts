@@ -1,3 +1,3 @@
 export class TextResponseModel {
-    response: string;
+  response: string;
 }

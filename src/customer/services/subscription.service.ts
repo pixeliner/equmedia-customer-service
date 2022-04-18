@@ -2,7 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import { ClaimEntity, SubscriptionEntity } from 'src/db/entities';
-import { GetSubscriptionClaimsQuery, GetSubscriptionsQuery } from '../queries/impl';
+import {
+  GetSubscriptionClaimsQuery,
+  GetSubscriptionsQuery,
+} from '../queries/impl';
 
 @Injectable()
 export class SubscriptionService {

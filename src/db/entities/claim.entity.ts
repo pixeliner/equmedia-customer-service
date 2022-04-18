@@ -1,6 +1,12 @@
-import { BaseEntity, JoinTable, Column, ManyToMany, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
-import { CustomerEntity } from './customer.entity';
-import { SubscriptionEntity } from './subscription.entity';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  Unique,
+  OneToMany,
+} from 'typeorm';
+import { CustomerClaimEntity } from './customer-claim.entity';
 
 @Entity()
 @Unique(['key'])
@@ -14,14 +20,9 @@ export class ClaimEntity extends BaseEntity {
   @Column()
   key: string;
 
-  @ManyToMany(() => SubscriptionEntity)
-  @JoinTable()
-  subscriptions: SubscriptionEntity[];
-
-  @ManyToMany(() => CustomerEntity)
-  @JoinTable()
-  customers: CustomerEntity[];
-
-  @Column()
-  expiresAt: Date;
+  @OneToMany(
+    (type) => CustomerClaimEntity,
+    (customerClaim) => customerClaim.claim,
+  )
+  customers: CustomerClaimEntity[];
 }
