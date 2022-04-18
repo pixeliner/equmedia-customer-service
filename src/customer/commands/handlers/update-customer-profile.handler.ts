@@ -9,7 +9,8 @@ import { ErrorValidationService } from 'src/utils/error-validation';
 
 @CommandHandler(UpdateCustomerProfileCommand)
 export class UpdateCustomerProfileHandler
-  implements ICommandHandler<UpdateCustomerProfileCommand> {
+  implements ICommandHandler<UpdateCustomerProfileCommand>
+{
   constructor(
     @InjectRepository(CustomerRepository)
     private readonly customerRepository: CustomerRepository,
@@ -33,7 +34,9 @@ export class UpdateCustomerProfileHandler
 
       return updatedCustomer;
     } catch (error) {
-      const { code, message } = this.errorValidationService.validateDbError(error.code);
+      const { code, message } = this.errorValidationService.validateDbError(
+        error.code,
+      );
 
       throw new RpcException({
         statusCode: code,

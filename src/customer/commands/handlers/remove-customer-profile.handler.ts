@@ -8,14 +8,15 @@ import { ErrorValidationService } from 'src/utils/error-validation';
 
 @CommandHandler(RemoveCustomerProfileCommand)
 export class RemoveCustomerProfileHandler
-  implements ICommandHandler<RemoveCustomerProfileCommand> {
+  implements ICommandHandler<RemoveCustomerProfileCommand>
+{
   constructor(
     @InjectRepository(CustomerRepository)
     private readonly customerRepository: CustomerRepository,
     private readonly errorValidationService: ErrorValidationService,
   ) {}
 
-  async execute(command: RemoveCustomerProfileCommand): Promise<Boolean> {
+  async execute(command: RemoveCustomerProfileCommand): Promise<boolean> {
     const { id } = command.removeCustomerProfileDto;
     const customer = await this.customerRepository.findOne(id);
 
@@ -28,7 +29,9 @@ export class RemoveCustomerProfileHandler
     try {
       await this.customerRepository.remove(customer);
     } catch (error) {
-      const { code, message } = this.errorValidationService.validateDbError(error.code);
+      const { code, message } = this.errorValidationService.validateDbError(
+        error.code,
+      );
 
       throw new RpcException({
         statusCode: code,
