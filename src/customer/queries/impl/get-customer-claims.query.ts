@@ -1,3 +1,3 @@
 export class GetCustomerClaimsQuery {
-    constructor(public readonly id: string) {}
+  constructor(public readonly id: string) {}
 }

@@ -8,7 +8,8 @@ import { GetCustomerProfileQuery } from '../impl';
 
 @QueryHandler(GetCustomerProfileQuery)
 export class GetCustomerProfileHandler
-  implements IQueryHandler<GetCustomerProfileQuery> {
+  implements IQueryHandler<GetCustomerProfileQuery>
+{
   constructor(
     @InjectRepository(CustomerRepository)
     private readonly customerRepository: CustomerRepository,

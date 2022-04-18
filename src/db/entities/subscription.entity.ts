@@ -1,4 +1,12 @@
-import { CreateDateColumn, BaseEntity, Column, ManyToMany, JoinTable, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  CreateDateColumn,
+  BaseEntity,
+  Column,
+  ManyToMany,
+  JoinTable,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ClaimEntity } from './claim.entity';
 
 @Entity()

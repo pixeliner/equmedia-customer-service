@@ -7,8 +7,10 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
+import { CustomerClaimEntity } from './customer-claim.entity';
 
 @Entity()
 @Unique(['email'])
@@ -24,6 +26,12 @@ export class CustomerEntity extends BaseEntity {
 
   @Column()
   lastName: string;
+
+  @OneToMany(
+    (type) => CustomerClaimEntity,
+    (customerClaim) => customerClaim.customer,
+  )
+  claims: CustomerClaimEntity[];
 
   @CreateDateColumn()
   createdAt!: Date;
