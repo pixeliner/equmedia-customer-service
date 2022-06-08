@@ -3,7 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { CustomerEntity, SubscriptionEntity, ClaimEntity } from './entities';
-import { CustomerRepository, SubscriptionRepository, ClaimRepository } from './repositories';
 
 @Global()
 @Module({
@@ -22,7 +21,6 @@ import { CustomerRepository, SubscriptionRepository, ClaimRepository } from './r
         entities: [CustomerEntity, SubscriptionEntity, ClaimEntity],
       }),
     }),
-    TypeOrmModule.forFeature([CustomerRepository, SubscriptionRepository, ClaimRepository]),
   ],
 })
 export class DbModule {}

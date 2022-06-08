@@ -6,7 +6,7 @@ export const microserviceOptions = {
     urls: [
       `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_NODENAME}:${process.env.RABBITMQ_FIRST_HOST_PORT}/${process.env.RABBITMQ_DEFAULT_VHOST}`,
     ],
-    queue: 'auth_queue',
+    queue: 'customer_queue',
     queueOptions: {
       durable: false,
     },

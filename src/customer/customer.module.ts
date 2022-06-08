@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {
@@ -13,8 +14,9 @@ import {
 } from 'src/db/repositories';
 import { CommandHandlers } from './commands/handlers';
 import { CustomerController } from './controllers/customer.controller';
+import { SubscriptionController } from './controllers/subscription.controller';
 import { QueryHandlers } from './queries/handlers';
-import { CustomerService } from './services';
+import { CustomerService, SubscriptionService } from './services';
 
 @Module({
   imports: [
@@ -22,13 +24,16 @@ import { CustomerService } from './services';
       CustomerRepository,
       ClaimRepository,
       SubscriptionRepository,
-      CustomerEntity,
-      ClaimEntity,
-      SubscriptionEntity,
     ]),
     CqrsModule,
   ],
-  controllers: [CustomerController],
-  providers: [CustomerService, ...CommandHandlers, ...QueryHandlers],
+  controllers: [CustomerController, SubscriptionController],
+  providers: [
+    CustomerService,
+    SubscriptionService,
+    ConfigService,
+    ...CommandHandlers,
+    ...QueryHandlers,
+  ],
 })
 export class CustomerModule {}

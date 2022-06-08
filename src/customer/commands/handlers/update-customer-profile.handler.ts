@@ -21,15 +21,15 @@ export class UpdateCustomerProfileHandler
     command: UpdateCustomerProfileCommand,
   ): Promise<CustomerEntity> {
     const { id, updateCustomerProfileData } = command.updateCustomerProfileDto;
-    const { first_name, last_name } = updateCustomerProfileData;
+    const { firstName, lastName } = updateCustomerProfileData;
 
     // TODO: Update subscription claims
 
     try {
       const updatedCustomer = await this.customerRepository.save({
         id,
-        first_name,
-        last_name,
+        firstName,
+        lastName,
       });
 
       return updatedCustomer;

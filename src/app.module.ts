@@ -16,7 +16,7 @@ import { CustomerModule } from './customer/customer.module';
     DbModule,
     UtilsModule,
     HealthModule,
-    CustomerModule
+    CustomerModule,
   ],
 })
 export class AppModule {}
